@@ -12,7 +12,57 @@ body {
   position: relative;
 }
 
-/* Trung tâm lời chúc */
+/* ====== Nhập tên ====== */
+.name-input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff0f5;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(216, 27, 96, 0.2);
+  border: 2px solid #ffc1e3;
+  animation: fadeIn 1s ease;
+}
+.name-input h2 {
+  color: #c2185b;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.name-input input {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid #f8bbd0;
+  outline: none;
+  width: 200px;
+  font-family: "Mali";
+  font-size: 1rem;
+  color: #c2185b;
+  text-align: center;
+}
+.name-input button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #f06292, #ec407a);
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+.name-input button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #d81b60, #f06292);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* ====== Trung tâm lời chúc ====== */
 .center-message {
   position: absolute;
   top: 50%;
@@ -25,8 +75,7 @@ body {
   font-weight: 400;
   color: #c2185b;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(216, 27, 96, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  box-shadow: 0 20px 60px rgba(216, 27, 96, 0.3);
   z-index: 1;
   max-width: 90%;
   animation: pulse 3s ease-in-out infinite;
@@ -35,12 +84,8 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.05);
-  }
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
 }
 
 .center-message strong {
@@ -56,12 +101,8 @@ body {
 }
 
 @keyframes gradient {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* Overlay */
@@ -73,11 +114,6 @@ body {
   backdrop-filter: blur(5px);
   z-index: 99;
   display: none;
-  animation: fadeInOverlay 0.3s ease;
-}
-@keyframes fadeInOverlay {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 .overlay.active { display: block; }
 
@@ -85,7 +121,7 @@ body {
 .popup {
   position: fixed;
   top: 50%; left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%);
   background: linear-gradient(135deg, #ffffff 0%, #fff5f8 100%);
   border-radius: 25px;
   box-shadow: 0 25px 80px rgba(216, 27, 96, 0.4);
@@ -95,57 +131,21 @@ body {
   width: 90%;
   max-width: 400px;
   display: none;
-  animation: popupShow 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-  border: 3px solid rgba(255, 255, 255, 0.8);
 }
-
-@keyframes popupShow {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5) rotate(-5deg);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1) rotate(0deg);
-  }
-}
-
 .popup img {
   max-width: 100%;
   border-radius: 15px;
   margin-bottom: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 3px solid white;
 }
-
 .popup p {
   font-size: 1.1rem;
   color: #d81b60;
   line-height: 1.6;
-  margin-bottom: 20px;
   font-weight: 500;
 }
 
-.popup button {
-  margin-top: 10px;
-  background: linear-gradient(135deg, #d81b60 0%, #f06292 100%);
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 5px 20px rgba(216, 27, 96, 0.4);
-  transition: all 0.3s ease;
-}
-.popup button:hover {
-  background: linear-gradient(135deg, #ad1457 0%, #e91e63 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(216, 27, 96, 0.5);
-}
-
-/* Hiệu ứng rơi */
+/* Rơi */
 .falling-letter {
   position: absolute;
   top: -100px;
@@ -155,44 +155,36 @@ body {
   user-select: none;
   z-index: 2;
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
-  transition: transform 0.3s ease;
 }
-.falling-letter:hover {
-  transform: scale(1.2) rotate(10deg);
-  filter: drop-shadow(0 10px 20px rgba(216, 27, 96, 0.4));
-}
-
 @keyframes fall {
-  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100vh) rotate(0deg); opacity: 0.3; }
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0.3; }
 }
 
-/* Hiệu ứng tim */
+/* Tim */
 .heart {
   position: absolute;
   transform: translate(-50%, -50%);
   animation: explode 2s ease-out forwards;
   pointer-events: none;
-  user-select: none;
 }
 @keyframes explode {
   0% { transform: translate(-50%, -50%) translate(0, 0); opacity: 1; }
   100% { transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(1.5); opacity: 0; }
 }
 
-/* Ảnh GIF */
+/* GIF */
 .center-gif {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 150px;
-  max-width: 40vw;
   z-index: 10;
   pointer-events: none;
 }
 
-/* Responsive */
+/* Mobile */
 @media (max-width: 768px) {
   .center-message {
     width: calc(100% - 20px);
@@ -201,9 +193,5 @@ body {
     border-radius: 20px;
   }
   .center-message strong { font-size: 1.3rem; }
-  .popup { width: 90%; padding: 20px; border-radius: 20px; }
-  .popup img { border-radius: 10px; }
-  .popup p { font-size: 1rem; }
-  .popup button { padding: 10px 25px; font-size: 0.95rem; }
   .falling-letter { width: 40px; animation-duration: 9s; }
 }
