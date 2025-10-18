@@ -26,7 +26,7 @@
   </div>
 
   <!-- Ảnh động trang trí -->
-  <img src="./assets/mewmew.gif" alt="GIF" class="center-gif" />
+  <img src="mewmew.gif" alt="GIF" class="center-gif" />
 
   <!-- Hiển thị lời chúc -->
   <div class="popup" id="popup">
@@ -38,16 +38,16 @@
   <div class="overlay" id="overlay"></div>
 
   <!-- Nhạc nền -->
-  <audio id="player" src="./assets/a.mp3"></audio>
+  <audio id="player" src="a.mp3"></audio>
 
   <!-- Script -->
   <script>
     const messages = [
-      { img: "./assets/a1.jpg", text: "Chúc bạn luôn vui vẻ, xinh đẹp và ngập tràn yêu thương!" },
-      { img: "./assets/a2.jpg", text: "Mỗi ngày của bạn đều là một đoá hoa nở rộ." },
-      { img: "./assets/a3.jpg", text: "Cảm ơn bạn vì đã luôn mạnh mẽ và tuyệt vời như thế!" },
-      { img: "./assets/a4.jpg", text: "Chúc bạn một ngày 20/10 thật hạnh phúc và trọn vẹn!" },
-      { img: "./assets/a5.jpg", text: "Bạn là món quà tuyệt vời nhất mà cuộc sống mang lại!" }
+      { img: "a1.jpg", text: "Chúc bạn luôn vui vẻ, xinh đẹp và ngập tràn yêu thương!" },
+      { img: "a2.jpg", text: "Mỗi ngày của bạn đều là một đoá hoa nở rộ." },
+      { img: "a3.jpg", text: "Cảm ơn bạn vì đã luôn mạnh mẽ và tuyệt vời như thế!" },
+      { img: "a4.jpg", text: "Chúc bạn một ngày 20/10 thật hạnh phúc và trọn vẹn!" },
+      { img: "a5.jpg", text: "Bạn là món quà tuyệt vời nhất mà cuộc sống mang lại!" }
     ];
 
     let currentMessageIndex = 0;
@@ -58,12 +58,12 @@
     const centerText = document.getElementById("centerText");
 
     const letterImages = [
-      "./assets/letters.png",
-      "./assets/q3.png",
-      "./assets/h1.png",
-      "./assets/h3.png",
-      "./assets/t2.png",
-      "./assets/t5.png",
+      "letters.png",
+      "q3.png",
+      "h1.png",
+      "h3.png",
+      "t2.png",
+      "t5.png",
     ];
 
     function createHeartExplosion(x, y) {
