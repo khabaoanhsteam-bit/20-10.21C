@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Chúc mừng 20/10</title>
 
-  <!-- Font -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
-
-  <!-- CSS riêng -->
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Thông điệp chúc mừng-->
-  <div class="center-message">
+  <!-- Nhập tên -->
+  <div class="name-input" id="nameInputContainer">
+    <h2>Nhập tên của người nhận 🎀</h2>
+    <input type="text" id="nameInput" placeholder="Nhập tên..." />
+    <button id="startBtn">Bắt đầu</button>
+  </div>
+
+  <!-- Thông điệp chúc mừng -->
+  <div class="center-message" id="mainContent" style="display:none;">
     <strong>Chúc mừng 20-10</strong>
     <span id="centerText">
       Ngày Phụ nữ Việt Nam<br>
@@ -28,7 +29,7 @@
   <!-- Ảnh động trang trí -->
   <img src="mewmew.gif" alt="GIF" class="center-gif" />
 
-  <!-- Hiển thị lời chúc -->
+  <!-- Popup lời chúc -->
   <div class="popup" id="popup">
     <div class="popup-content">
       <img id="popupImage" src="" alt="Lời chúc">
@@ -42,6 +43,8 @@
 
   <!-- Script -->
   <script>
+    let userName = "";
+
     const messages = [
       { img: "a1.jpg", text: "Chúc bạn luôn vui vẻ, xinh đẹp và ngập tràn yêu thương!" },
       { img: "a2.jpg", text: "Mỗi ngày của bạn đều là một đoá hoa nở rộ." },
@@ -50,7 +53,6 @@
       { img: "a5.jpg", text: "Bạn là món quà tuyệt vời nhất mà cuộc sống mang lại!" }
     ];
 
-    let currentMessageIndex = 0;
     const popup = document.getElementById("popup");
     const overlay = document.getElementById("overlay");
     const popupImage = document.getElementById("popupImage");
@@ -65,6 +67,23 @@
       "t2.png",
       "t5.png",
     ];
+
+    // === CƠ CHẾ NHẬP TÊN ===
+    document.getElementById("startBtn").addEventListener("click", () => {
+      const nameField = document.getElementById("nameInput");
+      const name = nameField.value.trim();
+      if (!name) {
+        alert("Vui lòng nhập tên trước khi bắt đầu!");
+        return;
+      }
+      userName = name;
+
+      document.getElementById("nameInputContainer").style.display = "none";
+      document.getElementById("mainContent").style.display = "block";
+
+      // bắt đầu hiệu ứng
+      setInterval(() => createFallingLetter(), 1000);
+    });
 
     function createHeartExplosion(x, y) {
       const hearts = ['💗'];
@@ -106,13 +125,13 @@
     }
 
     function showPopup() {
-      const message = messages[currentMessageIndex];
-      popupImage.src = message.img;
-      popupMessage.textContent = message.text;
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      const personalizedText = randomMessage.text.replace(/bạn/g, userName);
+      popupImage.src = randomMessage.img;
+      popupMessage.textContent = personalizedText;
       popup.style.display = "block";
       overlay.classList.add("active");
-      popup.dataset.currentMessage = message.text;
-      currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+      popup.dataset.currentMessage = personalizedText;
     }
 
     function closePopup() {
@@ -123,14 +142,12 @@
       }
     }
 
+    overlay.addEventListener("click", closePopup);
+
     document.body.addEventListener("click", function () {
       const player = document.getElementById("player");
       if (player.paused) player.play();
     });
-
-    overlay.addEventListener("click", closePopup);
-    setInterval(() => createFallingLetter(), 1000);
   </script>
 </body>
-
 </html>
