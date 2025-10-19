@@ -46,11 +46,68 @@
     let userName = "";
 
     const messages = [
-      { img: "a1.jpg", text: "Chúc bạn luôn vui vẻ, xinh đẹp và ngập tràn yêu thương!" },
-      { img: "a2.jpg", text: "Mỗi ngày của bạn đều là một đoá hoa nở rộ." },
-      { img: "a3.jpg", text: "Cảm ơn bạn vì đã luôn mạnh mẽ và tuyệt vời như thế!" },
-      { img: "a4.jpg", text: "Chúc bạn một ngày 20/10 thật hạnh phúc và trọn vẹn!" },
-      { img: "a5.jpg", text: "Bạn là món quà tuyệt vời nhất mà cuộc sống mang lại!" }
+      { img: "Đạt.png", text: "Đạt chúc {name} luôn rạng rỡ, tràn ngập niềm vui và nụ cười!" },
+      { img: "Đức An.png", text: "Đức An chúc {name} một ngày 20/10 thật hạnh phúc và đáng nhớ!" },
+      { img: "Đức Huy.png", text: "Đức Huy chúc {name} mãi xinh đẹp và vững bước trên con đường mình chọn." },
+      { img: "Duc Phat.png", text: "Duc Phat chúc {name} luôn gặp may mắn và nhận nhiều yêu thương!" },
+      { img: "Duy.png", text: "Duy chúc {name} một ngày ngập tràn hoa và nụ cười." },
+      { img: "Hoài Sang.png", text: "Hoài Sang chúc {name} luôn tỏa sáng như một đóa hoa rực rỡ." },
+      { img: "Hoàng Hậu.png", text: "Hoàng Hậu chúc {name} hạnh phúc, bình an và luôn được yêu thương." },
+      { img: "Hoàng Nam.png", text: "Hoàng Nam chúc {name} nhiều niềm vui và những điều tốt đẹp!" },
+      { img: "Hoàng Nhật.png", text: "Hoàng Nhật chúc {name} luôn mạnh mẽ, tự tin và xinh đẹp." },
+      { img: "Hoàng Phúc.png", text: "Hoàng Phúc chúc {name} ngày 20/10 thật ấm áp bên người thân." },
+      { img: "Hoàng.png", text: "Hoàng chúc {name} ngập tràn niềm vui và tiếng cười hôm nay!" },
+      { img: "Hữu Đức.png", text: "Hữu Đức chúc {name} luôn nhận được nhiều may mắn và hạnh phúc." },
+      { img: "Huy Hoàng.png", text: "Huy Hoàng chúc {name} một ngày thật trọn vẹn và ngọt ngào." },
+      { img: "Khả Duy.png", text: "Khả Duy chúc {name} luôn rạng rỡ, tươi tỉnh như hoa mỗi sáng!" },
+      { img: "Khang Thịnh.png", text: "Khang Thịnh chúc {name} sức khỏe, thành công và niềm vui." },
+      { img: "Khánh Dương.png", text: "Khánh Dương chúc {name} được nhận thật nhiều yêu thương." },
+      { img: "Kiệt.png", text: "Kiệt chúc {name} luôn tràn đầy năng lượng và nụ cười." },
+      { img: "Long Bình.png", text: "Long Bình chúc {name} cuộc sống luôn ngọt ngào như kẹo." },
+      { img: "Minh Hải.png", text: "Minh Hải chúc {name} mọi điều tốt đẹp sẽ đến trong năm nay." },
+      { img: "Minh Khôi.png", text: "Minh Khôi chúc {name} mãi tươi trẻ và tràn đầy cảm hứng." },
+      { img: "Minh Mẫn.png", text: "Minh Mẫn chúc {name} một ngày 20/10 đáng nhớ và hạnh phúc." },
+      { img: "Minh Phi.png", text: "Minh Phi chúc {name} ngập tràn yêu thương và niềm vui." },
+      { img: "Minh Tâm.png", text: "Minh Tâm chúc {name} luôn bình an và vững vàng." },
+      { img: "Minh Trí.png", text: "Minh Trí chúc {name} những khoảnh khắc ngọt ngào bên người thân." },
+      { img: "Ngọc Tài.png", text: "Ngọc Tài chúc {name} luôn hạnh phúc và mỉm cười mỗi ngày!" },
+      { img: "Nguyễn Đạt.png", text: "Nguyễn Đạt chúc {name} nuôi dưỡng những ước mơ đẹp và thành công." },
+      { img: "Nguyễn Linh.png", text: "Nguyễn Linh chúc {name} mai này luôn rạng rỡ như hôm nay." },
+      { img: "Nguyễn Quang.png", text: "Nguyễn Quang chúc {name} một ngày thật trọn vẹn và ấm áp." },
+      { img: "Phi Hùng.png", text: "Phi Hùng chúc {name} vô số niềm vui và bất ngờ dễ thương." },
+      { img: "Phú Phạm.png", text: "Phú Phạm chúc {name} luôn tự tin và tỏa sáng." },
+      { img: "Phúc Đại.png", text: "Phúc Đại chúc {name} nhận được thật nhiều lời chúc và quà ý nghĩa." },
+      { img: "Phúc Huy.png", text: "Phúc Huy chúc {name} luôn được yêu thương và trân trọng." },
+      { img: "Phước An.png", text: "Phước An chúc {name} một ngày thật nhiều kỷ niệm đẹp." },
+      { img: "Tâm Phúc.png", text: "Tâm Phúc chúc {name} bình an, khỏe mạnh và hạnh phúc." },
+      { img: "Tấn Đạt.png", text: "Tấn Đạt chúc {name} một ngày tràn ngập tiếng cười." },
+      { img: "Tấn Phát.png", text: "Tấn Phát chúc {name} mọi điều tốt lành sẽ đến trong tương lai." },
+      { img: "Tấn Thành.png", text: "Tấn Thành chúc {name} luôn giữ nụ cười trên môi mỗi ngày." },
+      { img: "Thái Dương.png", text: "Thái Dương chúc {name} tỏa sáng và đạt được mọi ước mơ." },
+      { img: "Thái Tài.png", text: "Thái Tài chúc {name} tràn đầy may mắn và tình yêu." },
+      { img: "Thanh Dương.png", text: "Thanh Dương chúc {name} một ngày ấm áp và trọn vẹn." },
+      { img: "Thanh Hùng.png", text: "Thanh Hùng chúc {name} những điều ngọt ngào nhất." },
+      { img: "Thanh Lâm.png", text: "Thanh Lâm chúc {name} niềm vui nhỏ mỗi ngày." },
+      { img: "Thành Nhân.png", text: "Thành Nhân chúc {name} cảm thấy yêu đời và an yên." },
+      { img: "Thanh Tùng.png", text: "Thanh Tùng chúc {name} một ngày đáng nhớ và vui vẻ." },
+      { img: "Thế Vinh.png", text: "Thế Vinh chúc {name} luôn tràn đầy năng lượng tích cực." },
+      { img: "Thiện Nhân.png", text: "Thiện Nhân chúc {name} gặt hái thật nhiều nụ cười." },
+      { img: "Tiến Đặng.png", text: "Tiến Đặng chúc {name} mọi điều tốt đẹp và thuận lợi." },
+      { img: "Tiến Hưng.png", text: "Tiến Hưng chúc {name} hạnh phúc và may mắn quanh năm." },
+      { img: "Tiến Thành.png", text: "Tiến Thành chúc {name} luôn xinh đẹp và tự tin." },
+      { img: "Tín Phát.png", text: "Tín Phát chúc {name} gặt hái nhiều niềm vui mới." },
+      { img: "Tín.png", text: "Tín chúc {name} mỗi ngày đều đáng yêu và rạng rỡ." },
+      { img: "Triết Huỳnh.png", text: "Triết Huỳnh chúc {name} ngập tràn hạnh phúc và tiếng cười." },
+      { img: "Trung Hiếu.png", text: "Trung Hiếu chúc {name} những điều ấm áp nhất." },
+      { img: "Trung Phus.png", text: "Trung Phus chúc {name} một ngày đầy bất ngờ dễ thương." },
+      { img: "Tuấn Ngọc.png", text: "Tuấn Ngọc chúc {name} luôn vui vẻ và tự tại." },
+      { img: "Tuấn Phúc.png", text: "Tuấn Phúc chúc {name} luôn may mắn và bình an." },
+      { img: "Văn Đạt.png", text: "Văn Đạt chúc {name} luôn rạng rỡ và thành công." },
+      { img: "Văn Khương.png", text: "Văn Khương chúc {name} một ngày tràn ngập niềm vui." },
+      { img: "Văn Thanh.png", text: "Văn Thanh chúc {name} hạnh phúc cùng những người thân yêu." },
+      { img: "Vĩ Khang.png", text: "Vĩ Khang chúc {name} luôn xinh đẹp và tươi trẻ." },
+      { img: "Viết Thắng.png", text: "Viết Thắng chúc {name} một ngày thật tuyệt vời." },
+      { img: "Vinh Võ.png", text: "Vinh Võ chúc {name} nhận thật nhiều yêu thương hôm nay." }
     ];
 
     const popup = document.getElementById("popup");
@@ -59,16 +116,8 @@
     const popupMessage = document.getElementById("popupMessage");
     const centerText = document.getElementById("centerText");
 
-    const letterImages = [
-      "letters.png",
-      "q3.png",
-      "h1.png",
-      "h3.png",
-      "t2.png",
-      "t5.png",
-    ];
+    const letterImages = ["letters.png", "q3.png", "h1.png", "h3.png", "t2.png", "t5.png"];
 
-    // === CƠ CHẾ NHẬP TÊN ===
     document.getElementById("startBtn").addEventListener("click", () => {
       const nameField = document.getElementById("nameInput");
       const name = nameField.value.trim();
@@ -77,32 +126,25 @@
         return;
       }
       userName = name;
-
       document.getElementById("nameInputContainer").style.display = "none";
       document.getElementById("mainContent").style.display = "block";
-
-      // bắt đầu hiệu ứng
       setInterval(() => createFallingLetter(), 1000);
     });
 
     function createHeartExplosion(x, y) {
       const hearts = ['💗'];
       const numHearts = 12;
-
       for (let i = 0; i < numHearts; i++) {
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-
         const angle = (Math.PI * 2 / numHearts) * i;
         const distance = Math.random() * 80 + 40;
-
         heart.style.left = x + 'px';
         heart.style.top = y + 'px';
         heart.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
         heart.style.setProperty('--dy', Math.sin(angle) * distance + 'px');
         heart.style.fontSize = (Math.random() * 10 + 20) + 'px';
-
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 2000);
       }
@@ -119,14 +161,13 @@
         letter.classList.add('letter-clicked');
         setTimeout(() => showPopup(), 300);
       });
-
       document.body.appendChild(letter);
       setTimeout(() => letter.remove(), 8000);
     }
 
     function showPopup() {
       const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-      const personalizedText = randomMessage.text.replace(/bạn/g, userName);
+      const personalizedText = randomMessage.text.replace("{name}", userName);
       popupImage.src = randomMessage.img;
       popupMessage.textContent = personalizedText;
       popup.style.display = "block";
